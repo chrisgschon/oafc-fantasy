@@ -3,6 +3,10 @@
 from django.db import migrations
 
 
+def create_data(apps, schema_editor):
+    Player = apps.get_model('players', 'Player')
+    Customer(first_name="Player 001", last_name="Schon", email="customer001@email.com", description= "Customer 001 description").save()
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -10,4 +14,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RunPython(create_data),
     ]
